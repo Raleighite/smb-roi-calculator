@@ -33,3 +33,7 @@ Just open `index.html` directly in a browser — it works as a standalone file.
 - Vanilla JS
 - [Chart.js](https://www.chartjs.org/) (loaded via CDN)
 - Single HTML file — fully self-contained
+
+## Architecture map
+
+Download and open [the offline Floorplan](docs/floorplan/index.html). Start here, search and Flows explain the pinned source, not a tested deployment. See [scope, licenses and freshness checks](docs/floorplan/README.md).
