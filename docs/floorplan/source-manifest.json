@@ -1,0 +1,44 @@
+{
+  "schema": "floorplan/source-manifest@1",
+  "repository": "Raleighite/smb-roi-calculator",
+  "source_commit": "68141d0d94a6ad05434e4bcbd68012725ee8b331",
+  "scope": "Static source mapping; no runtime or deployed-state claim.",
+  "source_policy": "Git-tracked/unignored source/config/templates/static per check_freshness.py, including Procfile; docs/tests/dependencies/cache excluded. Baseline is original unredacted source.",
+  "source_files": {
+    "Dockerfile": "849cd0edf78d1c92268fea296cc1d53134fd5f2b686596c6c8e11a65c9d2c347",
+    "docker-compose.yml": "4b7f0f0188bd1fb26f7a4dae257c6d2e133634f9dad1a1e68c5e01ac898ecf7e",
+    "index.html": "cbb86b69c7417c75a76671507a2e01b703442b7603182cd7457e5821bf9ce6cb"
+  },
+  "admitted_snapshot": {
+    "docker-compose.yml": "4b7f0f0188bd1fb26f7a4dae257c6d2e133634f9dad1a1e68c5e01ac898ecf7e",
+    "LICENSE": "278c0c447ae8be6d5e6b745f064cfc8672bdb36672a22df5d981fa1fc2443967",
+    "index.html": "cbb86b69c7417c75a76671507a2e01b703442b7603182cd7457e5821bf9ce6cb",
+    "README.md": "f5e4cf8ea4281e6c0ddda1677756ae7ce314897732a7c976a2e5f01a93a758b4"
+  },
+  "counts": {
+    "files": 4,
+    "codeFiles": 1,
+    "routes": 0,
+    "modules": 5,
+    "unassigned": 0,
+    "flows": 2,
+    "tour": 3,
+    "links": 5
+  },
+  "artifacts": {
+    "check_freshness.py": "9d941c34d0b3647da6754819c32c51d83cadf2339a6fe7bcbf614c7dc81c22dd",
+    "source-review.json": "5f2a35ac0d058b445bd08e7e21794f3eac93ca69522a69959bbbf7ba6cdc8923",
+    "generator.json": "69eafa111b0274f81cd6a7afc2c60c6d2c5f3fd590fa5b962e87323b4e55f0e1",
+    "architecture.json": "292f8c8f6c067ce795388a13e91d18c89cacbddd2133c712337a9715b89348d2",
+    "NOTICE.md": "1b961d21b4feedd4af9be96ea51dd05d1f7cf45304ab4fe88d95ba0cebeada2f",
+    "index.html": "fde45260cf692af937dea96cabd9ee95ceb19a9c7422dc019ba02a49399560f0",
+    "README.md": "aaddfd970ac0734e1c827a159e639902d33bfd1d4d33057fcc8b51c1379ef2ff",
+    "descriptions/reviewed.json": "1ec8db56a6e05e0e95c99d20adf295c63ceb1bea774cb802ff88a879aea33826",
+    "tests/test_freshness.py": "a99031f01872d56d1b14430537b999d1ebf455f461919a5cd7641b193e4710a0",
+    "licenses/inter-LICENSE.txt": "3b0a5fca3d17942cde889069889dedbbbd075e9b599968c82a95f4d944e9b345",
+    "licenses/elkjs-LICENSE.md": "89591d4578fb1ebd91501312a3d25f021bd865a2e436641c1cf7b1bc7e3c1617",
+    "licenses/LICENSE": "65a06a9dab105cd5a2b713a41a020a442bd431e6e19631182ed3889fd1672faf",
+    "licenses/jetbrains-mono-LICENSE.txt": "403581b69dac5cff4079205e01c6b467e56af449ecbd7247693ddb1baafa005b",
+    "licenses/source/LICENSE": "278c0c447ae8be6d5e6b745f064cfc8672bdb36672a22df5d981fa1fc2443967"
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "$schema": "floorplan/architecture@1",
+  "audience": "everyone",
+  "project": {
+    "name": "smb-roi-calculator",
+    "summary": "One HTML document performs browser-side automation-cost estimates, updates a Chart.js comparison and serializes scenario values in a shareable URL fragment; there is no application backend.",
+    "entrypoints": [
+      "index.html"
+    ]
+  },
+  "include": [
+    "code",
+    "config",
+    "docs",
+    "other"
+  ],
+  "nodes": [
+    {
+      "id": "inputs",
+      "label": "Scenario sliders",
+      "summary": "Eight sliders combine business inputs and automation assumptions.",
+      "paths": [
+        "index.html",
+        "README.md",
+        "LICENSE"
+      ],
+      "kind": "service"
+    },
+    {
+      "id": "math",
+      "label": "Savings and ROI calculations",
+      "summary": "calculate computes monthly savings, payback and horizon ROI from the slider state.",
+      "paths": [
+        "index.html"
+      ],
+      "kind": "service"
+    },
+    {
+      "id": "display",
+      "label": "Metrics and chart",
+      "summary": "Updates metric tiles, the payback bar and cumulative cost datasets.",
+      "paths": [
+        "index.html",
+        "docker-compose.yml"
+      ],
+      "kind": "service"
+    },
+    {
+      "id": "share",
+      "label": "URL scenario sharing",
+      "summary": "Reads and writes numeric state in the fragment and copies a scenario URL.",
+      "paths": [
+        "index.html"
+      ],
+      "kind": "service"
+    },
+    {
+      "id": "chartjs",
+      "label": "Chart.js CDN",
+      "summary": "Provides the Chart constructor; despite the single-file layout, this is an external script dependency.",
+      "paths": [],
+      "kind": "external"
+    }
+  ],
+  "edges": [
+    {
+      "from": "inputs",
+      "to": "math",
+      "label": "Recalculate on slider input",
+      "description": "Recalculate on slider input.",
+      "kind": "data"
+    },
+    {
+      "from": "math",
+      "to": "display",
+      "label": "Render estimates and datasets",
+      "description": "Render estimates and datasets.",
+      "kind": "data"
+    },
+    {
+      "from": "display",
+      "to": "chartjs",
+      "label": "Use Chart constructor and update",
+      "description": "Use Chart constructor and update.",
+      "kind": "data"
+    },
+    {
+      "from": "math",
+      "to": "share",
+      "label": "Replace fragment and update share URL",
+      "description": "Replace fragment and update share URL.",
+      "kind": "data"
+    },
+    {
+      "from": "share",
+      "to": "inputs",
+      "label": "Restore numeric fragment values on initialization",
+      "description": "Restore numeric fragment values on initialization.",
+      "kind": "data"
+    }
+  ],
+  "flows": [
+    {
+      "id": "estimate",
+      "title": "Change an automation scenario",
+      "steps": [
+        {
+          "node": "inputs",
+          "note": "Read employee, hours, labor cost, software and automation assumptions."
+        },
+        {
+          "node": "math",
+          "note": "Estimate labor savings using weeks per month and automation percentages; subtract tool cost for net savings."
+        },
+        {
+          "node": "display",
+          "note": "Refresh metric tiles, horizon ROI and cumulative cost lines."
+        },
+        {
+          "node": "share",
+          "note": "Replace the URL fragment with the current slider values."
+        }
+      ]
+    },
+    {
+      "id": "restore",
+      "title": "Restore and copy a shared scenario",
+      "steps": [
+        {
+          "node": "share",
+          "note": "Read known fragment keys and convert each to Number; there is no explicit range or finite-number validation."
+        },
+        {
+          "node": "inputs",
+          "note": "Assign restored values and wire slider input listeners."
+        },
+        {
+          "node": "display",
+          "note": "Initialize the externally loaded chart before the first calculation."
+        },
+        {
+          "node": "share",
+          "note": "Copy the current scenario URL through the Clipboard API when requested."
+        }
+      ]
+    }
+  ],
+  "tour": [
+    {
+      "node": "math",
+      "title": "Estimates, not observed business results",
+      "note": "The calculation is deterministic client-side arithmetic using assumptions. Software spend affects both chart cost series but is not deducted again from net savings."
+    },
+    {
+      "node": "display",
+      "title": "Single document does not mean offline app",
+      "note": "Chart.js loads from a CDN and initChart runs before calculate. This application was not run; only the separate architecture export is offline-tested."
+    },
+    {
+      "node": "share",
+      "title": "Sharing stores state in the URL",
+      "note": "No backend saves a scenario. Fragment values are converted to numbers without explicit validation and clipboard permissions depend on the browser."
+    }
+  ],
+  "annotations": []
+}

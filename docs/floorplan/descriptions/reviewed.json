@@ -1,0 +1,21 @@
+{
+  "files": {
+    "index.html": {
+      "name": "Browser calculator and scenario sharing",
+      "description": "Contains styles, sliders, calculation functions, metrics, Chart.js rendering and fragment/clipboard sharing. Net savings subtracts recurring tool cost; software spend is present in both chart series. No backend routes are declared."
+    },
+    "docker-compose.yml": {
+      "name": "Static nginx deployment wiring",
+      "description": "Builds the Dockerfile image, maps the host port to nginx and sets restart policy. No container was built or started."
+    },
+    "README.md": {
+      "name": "Calculator overview and usage",
+      "description": "Explains inputs, estimates and static-file/Docker entrypoints. The page loads Chart.js from a CDN despite its self-contained wording."
+    },
+    "LICENSE": {
+      "name": "Original project license",
+      "description": "Preserves the original MIT permission and copyright notice."
+    }
+  },
+  "routes": {}
+}
